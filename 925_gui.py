@@ -7,14 +7,24 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+#CHANGES FROM AUTO CREATION
+#1) Ui_MainWindow class inherits the QtGui.QMainWindow
+#2) Passed Ui_MainWindow the mainwindow instance
+#3) Wrote the whole init function
+#4) Wrote everything not in the Ui_MainWindow class
+
+
 from PyQt4 import QtCore, QtGui
+import sys
 
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    _fromUtf8 = lambda s: s
+class Ui_MainWindow(QtGui.QMainWindow):
 
-class Ui_MainWindow(object):
+    def __init__(self):
+    	'''Initialize the GUI window'''
+    	self.main_gui = QtGui.QMainWindow()
+    	self.setupUi(self.main_gui)
+    	self.main_gui.show()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(872, 690)
@@ -159,3 +169,18 @@ class Ui_MainWindow(object):
         self.actionReset.setText(QtGui.QApplication.translate("MainWindow", "Reset", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuit.setText(QtGui.QApplication.translate("MainWindow", "Quit", None, QtGui.QApplication.UnicodeUTF8))
 
+if __name__ == "__main__":
+    #==========================================Setup Parameters
+    
+	try:
+		_fromUtf8 = QtCore.QString.fromUtf8
+	except AttributeError:
+		_fromUtf8 = lambda s: s
+	
+	app = QtGui.QApplication(sys.argv)
+
+	#Create class instances
+	GUI = Ui_MainWindow()
+	
+	
+	sys.exit(app.exec_())
